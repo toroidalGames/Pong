@@ -16,8 +16,9 @@ public class PedalController : MonoBehaviour
     void SetBounds()
     {
         Vector3 bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
-        topBounds = bounds.y - 1.5f;
-        bottomBounds = -bounds.y + 1.5f;
+        float halfPedalLength = transform.localScale.y/2;
+        topBounds = bounds.y - halfPedalLength;
+        bottomBounds = -bounds.y + halfPedalLength;
     }
 
     void Update()
