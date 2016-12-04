@@ -17,8 +17,9 @@ public class PedalController : MonoBehaviour
     {
         Vector3 bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
         float halfPedalLength = transform.localScale.y/2;
-        topBounds = bounds.y - halfPedalLength;
-        bottomBounds = -bounds.y + halfPedalLength;
+        float wallHeight = GameObject.Find("WallTop").transform.localScale.y;
+        topBounds = bounds.y - halfPedalLength - wallHeight;
+        bottomBounds = -bounds.y+halfPedalLength + wallHeight;
     }
 
     void Update()
