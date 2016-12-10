@@ -24,48 +24,19 @@ public class BallController : MonoBehaviour
     {
         var pedal = collided.gameObject.GetComponent<PedalController>();
         var wall = collided.gameObject.CompareTag("Wall");
-        if (pedal && direction.x == 1f && direction.y == 1f)
+        if (pedal)
         {
-            direction = new Vector3(-1, 1, 0);
+            direction = new Vector3(-direction.x, direction.y, direction.z);
             Debug.Log("Collided with " + pedal);
         }
-        else if (pedal && direction.x == -1f && direction.y == -1f)
+        
+
+        if (wall)
         {
-            direction = new Vector3(1, -1, 0);
-            Debug.Log("Collided with " + pedal);
-        }
-        else if (pedal && direction.x == -1f && direction.y == 1f)
-        {
-            direction = new Vector3(1, 1, 0);
+            direction = new Vector3(direction.x, -direction.y, direction.z);
             Debug.Log("Collided with " + wall);
         }
-        else if (pedal && direction.x == 1f && direction.y == -1f)
-        {
-            direction = new Vector3(-1, -1, 0);
-            Debug.Log("Collided with " + wall);
-        }
-
-
-        if (wall && direction.x == -1f && direction.y == 1f)
-            {
-                direction = new Vector3(-1, -1, 0);
-                Debug.Log("Collided with " + wall);
-            }
-            else if (wall && direction.x == 1f && direction.y == -1f)
-            {
-                direction = new Vector3(1, 1, 0);
-                Debug.Log("Collided with " + wall);
-            }
-            else if (wall && direction.x == 1f && direction.y == 1f)
-            {
-                direction = new Vector3(1, -1, 0);
-                Debug.Log("Collided with " + wall);
-            }
-            else if (wall && direction.x == -1f && direction.y == -1f)
-            {
-                direction = new Vector3(-1, 1, 0);
-                Debug.Log("Collided with " + wall);
-            }
-        }
+         
     }
+}
 
