@@ -4,7 +4,7 @@ public class PedalController : MonoBehaviour
 {
     private enum PedalColour{Red, Green, Blue, Black};
 
-    private float speed = 10f;
+    private float speed;
     private float topBounds;
     private float bottomBounds;
     public KeyCode upKey;
@@ -15,10 +15,13 @@ public class PedalController : MonoBehaviour
     private PedalColour currentPedalColour;
     public bool colourModeEnabled;
     private ColourController pedalColourController;
+    private GameSettings gameSettings;
 
 
     void Start ()
     {
+        gameSettings = GetComponent<GameSettings>();
+        speed = gameSettings.RetrieveGameSpeed();
         pedalColourController = GetComponent<ColourController>();
         pedalColourController.currentObjectColour = ColourController.GameObjectColour.Black;
         colourModeEnabled = true;

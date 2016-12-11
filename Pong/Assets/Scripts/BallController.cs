@@ -7,10 +7,12 @@ public class BallController : MonoBehaviour
     private float velocity;
     private Vector3 direction;
     public bool colourMode = false;
+    private GameSettings gameSettings;
     // Use this for initialization
     void Start()
     {
-        velocity = 3f;
+        gameSettings = GameObject.Find("GameManager").GetComponent<GameSettings>();
+        velocity = gameSettings.RetrieveGameSpeed();
         direction = new Vector3(1, 1, 0);
     }
 
