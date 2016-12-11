@@ -2,32 +2,28 @@
 
 public class PedalController : MonoBehaviour
 {
+    private enum PedalColour{Red, Green, Blue, Black};
 
-    enum CurrentColourEnum
-    {
-        Red = 0,
-        Green =1,
-        Blue =2,
-        Black =3
-    }
-
-    public float pedalSpeed = 0.1f;
+    private float speed = 10f;
     private float topBounds;
     private float bottomBounds;
     public KeyCode upKey;
     public KeyCode downKey;
-    public KeyCode nextPedalColour;
-    public KeyCode previousPedalColour;
+    public KeyCode nextColourKey;
+    public KeyCode previousColourKey;
     private Renderer pedalRenderer;
-    private int colourValue;
+    private PedalColour currentPedalColour;
+    public bool colourModeEnabled;
+    private ColourController pedalColourController;
 
 
     void Start ()
     {
-        colourValue = 3;
+        pedalColourController = GetComponent<ColourController>();
+        pedalColourController.currentObjectColour = ColourController.GameObjectColour.Black;
+        colourModeEnabled = true;
         pedalRenderer = GetComponent<Renderer>();
         SetBounds();
-        
     }
 
     void SetBounds()
@@ -38,42 +34,48 @@ public class PedalController : MonoBehaviour
         topBounds = bounds.y - halfPedalLength - wallHeight;
         bottomBounds = -bounds.y+halfPedalLength + wallHeight;
     }
-    void ChangePedalColour(int colorval)
+ 
+    private Color ColourFromPedalColour(PedalColour pedalColourValue)
     {
-        colourValue = colorval;
-        switch ((CurrentColourEnum)colourValue)
+        switch (pedalColourValue)
         {
-                case CurrentColourEnum.Red:
-                pedalRenderer.material.color = Color.red;
-                break;
-            case CurrentColourEnum.Green:
-                pedalRenderer.material.color = Color.green;
-                break;
-            case CurrentColourEnum.Blue:
-                pedalRenderer.material.color = Color.blue;
-                break;
-            case CurrentColourEnum.Black:
-                pedalRenderer.material.color = Color.black;
-                break;
-                
+            case PedalColour.Red:
+                return Color.red;
+            case PedalColour.Green:
+                return Color.green;
+            case PedalColour.Blue:
+                return Color.blue;
+            case PedalColour.Black:
+                return Color.black;
         }
-    }
-
-
-
+        return Color.red;
+    } 
 
     void Update()
     {
         if (Input.GetKey(upKey) && transform.position.y < topBounds)
         {
-            transform.Translate(0f, pedalSpeed*Time.deltaTime, 0);
+            transform.Translate(0f, speed*Time.deltaTime, 0);
         }
         else if (Input.GetKey(downKey) && transform.position.y > bottomBounds)
         {
-            transform.Translate(0f, -pedalSpeed*Time.deltaTime, 0);
+            transform.Translate(0f, -speed*Time.deltaTime, 0);
         }
 
-       
+        if (colourModeEnabled)
+        {
+            var colourTest = pedalColourController.currentObjectColour;
 
+            int currentPedalColourIndex = (int)pedalColourController.currentObjectColour;
+            if (Input.GetKeyDown(nextColourKey))
+            {
+                currentPedalColour = (PedalColour)((currentPedalColourIndex) % 4);
+            }
+            else if (Input.GetKeyDown(previousColourKey))
+            {
+                currentPedalColour = (PedalColour)((currentPedalColourIndex - 1 + 4) % 4);
+            }
+            pedalRenderer.material.color = ColourFromPedalColour(currentPedalColour);
+        }
     }
 }
