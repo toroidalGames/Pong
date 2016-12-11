@@ -77,14 +77,24 @@ public class PedalController : MonoBehaviour
 
         if (colourMode == true)
         {
-            if (Input.GetKey(nextPedalColour))
+            if (Input.GetKeyDown(nextPedalColour))
             {
                 colourValue++;
             }
-            else if (Input.GetKey(previousPedalColour))
+            else if (Input.GetKeyDown(previousPedalColour))
             {
                 colourValue--;
             }
+            if (colourValue >= 4)
+            {
+                colourValue = 0;
+            }
+            else if (colourValue < 0)
+            {
+                colourValue = 3;
+            }
+            
+            
             ChangePedalColour(colourValue);
         }
 

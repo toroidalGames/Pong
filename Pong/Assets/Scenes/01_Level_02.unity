@@ -272,7 +272,7 @@ GameObject:
   - 50: {fileID: 980555126}
   - 114: {fileID: 980555125}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,6 +292,9 @@ MonoBehaviour:
   pedalSpeed: 5
   upKey: 119
   downKey: 115
+  nextPedalColour: 100
+  previousPedalColour: 97
+  colourMode: 0
 --- !u!50 &980555126
 Rigidbody2D:
   serializedVersion: 2
@@ -386,7 +389,7 @@ GameObject:
   - 50: {fileID: 1110279154}
   - 114: {fileID: 1110279153}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,6 +409,9 @@ MonoBehaviour:
   pedalSpeed: 5
   upKey: 273
   downKey: 274
+  nextPedalColour: 275
+  previousPedalColour: 276
+  colourMode: 0
 --- !u!50 &1110279154
 Rigidbody2D:
   serializedVersion: 2
@@ -664,6 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb41c64465782d148b1b3cc8de37d464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colourMode: 0
 --- !u!58 &1427182543
 CircleCollider2D:
   m_ObjectHideFlags: 0
