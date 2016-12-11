@@ -6,6 +6,7 @@ public class BallController : MonoBehaviour
 
     private float velocity;
     private Vector3 direction;
+    public bool colourMode = false;
     // Use this for initialization
     void Start()
     {
@@ -27,14 +28,13 @@ public class BallController : MonoBehaviour
         if (pedal)
         {
             direction = new Vector3(-direction.x, direction.y, direction.z);
-            Debug.Log("Collided with " + pedal);
+
         }
         
 
         if (wall)
         {
             direction = new Vector3(direction.x, -direction.y, direction.z);
-            Debug.Log("Collided with " + wall);
         }
          
     }
