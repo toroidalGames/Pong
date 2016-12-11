@@ -20,14 +20,12 @@ public class PedalController : MonoBehaviour
     public KeyCode previousPedalColour;
     private Renderer pedalRenderer;
     private int colourValue;
-    public bool colourMode = false;
 
 
     void Start ()
     {
         colourValue = 3;
         pedalRenderer = GetComponent<Renderer>();
-        colourMode = true;
         SetBounds();
         
     }
@@ -75,28 +73,7 @@ public class PedalController : MonoBehaviour
             transform.Translate(0f, -pedalSpeed*Time.deltaTime, 0);
         }
 
-        if (colourMode == true)
-        {
-            if (Input.GetKeyDown(nextPedalColour))
-            {
-                colourValue++;
-            }
-            else if (Input.GetKeyDown(previousPedalColour))
-            {
-                colourValue--;
-            }
-            if (colourValue >= 4)
-            {
-                colourValue = 0;
-            }
-            else if (colourValue < 0)
-            {
-                colourValue = 3;
-            }
-            
-            
-            ChangePedalColour(colourValue);
-        }
+       
 
     }
 }
