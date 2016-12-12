@@ -11,18 +11,21 @@ public class OptionsController : MonoBehaviour
 	void Start ()
 	{
         gameSettings = GetComponent<GameSettings>();
-	    //if (volumeSliderObject)
-	    //{
+        if (volumeSliderObject)
+        {
             volumeSlider = volumeSliderObject.GetComponent<Slider>();
             volumeSlider.value = gameSettings.RetrieveGameSpeed();
-        //}
+        }
         SetDefault();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	gameSettings.SetGameSpeed(volumeSlider.value);
-        Debug.Log("Speed set to: "+ gameSettings.RetrieveGameSpeed());
+	    if (volumeSliderObject)
+	    {
+            gameSettings.SetGameSpeed(volumeSlider.value);
+            Debug.Log("Speed set to: " + gameSettings.RetrieveGameSpeed());
+        }
 	}
 
     void SetDefault()

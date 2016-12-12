@@ -17,7 +17,7 @@ public class PedalController : MonoBehaviour
 
     void Start ()
     {
-        gameSettings = GetComponent<GameSettings>();
+        gameSettings = GameObject.Find("GameManager").GetComponent<GameSettings>();
         speed = gameSettings.RetrieveGameSpeed();
         colourModeEnabled = true;
         pedalRenderer = GetComponent<Renderer>();
