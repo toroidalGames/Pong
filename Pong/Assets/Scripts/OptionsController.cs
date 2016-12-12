@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class OptionsController : MonoBehaviour
 {
-
     public GameObject volumeSliderObject;
     private Slider volumeSlider;
     private GameSettings gameSettings;
@@ -12,10 +11,12 @@ public class OptionsController : MonoBehaviour
 	void Start ()
 	{
         gameSettings = GetComponent<GameSettings>();
-	    volumeSlider = volumeSliderObject.GetComponent<Slider>();
-	    volumeSlider.value = gameSettings.RetrieveGameSpeed();
+	    //if (volumeSliderObject)
+	    //{
+            volumeSlider = volumeSliderObject.GetComponent<Slider>();
+            volumeSlider.value = gameSettings.RetrieveGameSpeed();
+        //}
         SetDefault();
-       
 	}
 	
 	// Update is called once per frame

@@ -4,7 +4,7 @@ using System.Collections;
 public class ColourController : MonoBehaviour {
     public enum GameObjectColour { Red, Green, Blue, Black };
 
-
+    public static int ImConfused;
     public GameObjectColour currentObjectColour;
 
     // Use this for initialization

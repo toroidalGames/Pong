@@ -2,8 +2,6 @@
 
 public class PedalController : MonoBehaviour
 {
-    private enum PedalColour{Red, Green, Blue, Black};
-
     private float speed;
     private float topBounds;
     private float bottomBounds;
@@ -12,9 +10,8 @@ public class PedalController : MonoBehaviour
     public KeyCode nextColourKey;
     public KeyCode previousColourKey;
     private Renderer pedalRenderer;
-    private PedalColour currentPedalColour;
+    private PongColour currentPongColour;
     public bool colourModeEnabled;
-    private ColourController pedalColourController;
     private GameSettings gameSettings;
 
 
@@ -22,8 +19,6 @@ public class PedalController : MonoBehaviour
     {
         gameSettings = GetComponent<GameSettings>();
         speed = gameSettings.RetrieveGameSpeed();
-        pedalColourController = GetComponent<ColourController>();
-        pedalColourController.currentObjectColour = ColourController.GameObjectColour.Black;
         colourModeEnabled = true;
         pedalRenderer = GetComponent<Renderer>();
         SetBounds();
@@ -37,22 +32,7 @@ public class PedalController : MonoBehaviour
         topBounds = bounds.y - halfPedalLength - wallHeight;
         bottomBounds = -bounds.y+halfPedalLength + wallHeight;
     }
- 
-    private Color ColourFromPedalColour(PedalColour pedalColourValue)
-    {
-        switch (pedalColourValue)
-        {
-            case PedalColour.Red:
-                return Color.red;
-            case PedalColour.Green:
-                return Color.green;
-            case PedalColour.Blue:
-                return Color.blue;
-            case PedalColour.Black:
-                return Color.black;
-        }
-        return Color.red;
-    } 
+
 
     void Update()
     {
@@ -67,18 +47,17 @@ public class PedalController : MonoBehaviour
 
         if (colourModeEnabled)
         {
-            var colourTest = pedalColourController.currentObjectColour;
 
-            int currentPedalColourIndex = (int)pedalColourController.currentObjectColour;
+            int currentColourIndex = (int)currentPongColour;
             if (Input.GetKeyDown(nextColourKey))
             {
-                currentPedalColour = (PedalColour)((currentPedalColourIndex) % 4);
+                currentPongColour = (PongColour)((currentColourIndex + 1) % 4);
             }
             else if (Input.GetKeyDown(previousColourKey))
             {
-                currentPedalColour = (PedalColour)((currentPedalColourIndex - 1 + 4) % 4);
+                currentPongColour = (PongColour)((currentColourIndex - 1 + 4) % 4);
             }
-            pedalRenderer.material.color = ColourFromPedalColour(currentPedalColour);
+            pedalRenderer.material.color = Colour.ColourFromPongColour(currentPongColour);
         }
     }
 }

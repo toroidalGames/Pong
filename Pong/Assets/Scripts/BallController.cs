@@ -11,7 +11,7 @@ public class BallController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        gameSettings = GameObject.Find("GameManager").GetComponent<GameSettings>();
+        gameSettings = GameObject.Find("GameManager").GetComponent<GameSettings>(); 
         velocity = gameSettings.RetrieveGameSpeed();
         direction = new Vector3(1, 1, 0);
     }
