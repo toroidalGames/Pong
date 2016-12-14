@@ -935,6 +935,11 @@ Prefab:
       propertyPath: downKey
       value: 115
       objectReference: {fileID: 0}
+    - target: {fileID: 61000013251408942, guid: b41245a6a9450e043a8fde51757ba79c,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b41245a6a9450e043a8fde51757ba79c, type: 2}
   m_IsPrefabParent: 0

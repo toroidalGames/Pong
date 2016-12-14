@@ -11,7 +11,7 @@ public class PedalController : MonoBehaviour
     public KeyCode previousColourKey;
     private Renderer pedalRenderer;
     private PongColour currentPongColour;
-    public bool colourModeEnabled;
+   
     private GameSettings gameSettings;
 
 
@@ -19,7 +19,6 @@ public class PedalController : MonoBehaviour
     {
         gameSettings = GameObject.Find("GameManager").GetComponent<GameSettings>();
         speed = gameSettings.RetrieveGameSpeed();
-        colourModeEnabled = true;
         pedalRenderer = GetComponent<Renderer>();
         SetBounds();
     }
@@ -45,7 +44,7 @@ public class PedalController : MonoBehaviour
             transform.Translate(0f, -speed*Time.deltaTime, 0);
         }
 
-        if (colourModeEnabled)
+        if (GameSettings.colourModeEnabled)
         {
 
             int currentColourIndex = (int)currentPongColour;

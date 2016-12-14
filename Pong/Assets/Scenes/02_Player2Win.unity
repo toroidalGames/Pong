@@ -575,6 +575,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011333105178, guid: 322849ef964969c4aa193f988670dd17,
+        type: 2}
+      propertyPath: playerOneScoreText
+      value: 
+      objectReference: {fileID: 1978295851}
+    - target: {fileID: 114000011333105178, guid: 322849ef964969c4aa193f988670dd17,
+        type: 2}
+      propertyPath: playerTwoScoreText
+      value: 
+      objectReference: {fileID: 2084036480}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 322849ef964969c4aa193f988670dd17, type: 2}
   m_IsPrefabParent: 0

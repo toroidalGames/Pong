@@ -16,6 +16,8 @@ public class SceneLoader : MonoBehaviour {
     public void LoadGame()
     {
         SceneManager.LoadScene("01_Level_02");
+        GameSettings.playerOneScore = 0;
+        GameSettings.playerTwoScore = 0;
     }
 
     public void LoadSettings()
@@ -26,7 +28,6 @@ public class SceneLoader : MonoBehaviour {
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("00_MainMenu");
-
     }
 
 }
