@@ -11,8 +11,11 @@ public class GameSettings : MonoBehaviour
     [SerializeField]private Text playerOneScoreText;
     [SerializeField] private Text playerTwoScoreText;
     public static bool colourModeEnabled;
+    private SceneLoader sceneLoader;
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        sceneLoader = GetComponent<SceneLoader>();
         playerOneScoreText.text = playerOneScore.ToString();
         playerTwoScoreText.text = playerTwoScore.ToString();
     }
@@ -37,8 +40,10 @@ public class GameSettings : MonoBehaviour
     {
         playerOneScore++;
         playerOneScoreText.text = playerOneScore.ToString();
+        sceneLoader.NewRound();
         Debug.Log("PLayeronescore: "+ playerOneScore+"Player score text: "+playerOneScoreText);
-        if (playerOneScore ==1)
+
+        if (playerOneScore == 2)
         {
             SceneManager.LoadScene("02_Player1Win");
         }
@@ -48,7 +53,9 @@ public class GameSettings : MonoBehaviour
     {
         playerTwoScore++;
         playerTwoScoreText.text = playerTwoScore.ToString();
-        if (playerTwoScore == 1)
+        sceneLoader.NewRound();
+
+        if (playerTwoScore == 2)
         {
             SceneManager.LoadScene("02_Player2Win");
         }

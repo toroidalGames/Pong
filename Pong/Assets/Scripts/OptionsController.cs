@@ -7,6 +7,7 @@ public class OptionsController : MonoBehaviour
     public GameObject volumeSliderObject;
     private Slider volumeSlider;
     private GameSettings gameSettings;
+    private static bool gameDefaultSettings = true;
 	// Use this for initialization
 	void Start ()
 	{
@@ -16,7 +17,11 @@ public class OptionsController : MonoBehaviour
             volumeSlider = volumeSliderObject.GetComponent<Slider>();
             volumeSlider.value = gameSettings.RetrieveGameSpeed();
         }
-        SetDefault();
+	    if (gameDefaultSettings)
+	    {
+	        SetDefault();
+	    }
+
 	}
 	
 	// Update is called once per frame
@@ -24,6 +29,7 @@ public class OptionsController : MonoBehaviour
 	    if (volumeSliderObject)
 	    {
             gameSettings.SetGameSpeed(volumeSlider.value);
+	        gameDefaultSettings = false;
             Debug.Log("Speed set to: " + gameSettings.RetrieveGameSpeed());
         }
 	}
