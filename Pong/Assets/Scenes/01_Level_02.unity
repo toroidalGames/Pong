@@ -947,11 +947,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010607304730, guid: b41245a6a9450e043a8fde51757ba79c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.95
+      value: -7.29
       objectReference: {fileID: 0}
     - target: {fileID: 4000010607304730, guid: b41245a6a9450e043a8fde51757ba79c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.19
+      value: -0.69
       objectReference: {fileID: 0}
     - target: {fileID: 4000010607304730, guid: b41245a6a9450e043a8fde51757ba79c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -977,19 +977,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114000013876068894, guid: b41245a6a9450e043a8fde51757ba79c,
-        type: 2}
-      propertyPath: upKey
-      value: 119
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013876068894, guid: b41245a6a9450e043a8fde51757ba79c,
-        type: 2}
-      propertyPath: downKey
-      value: 115
-      objectReference: {fileID: 0}
-    - target: {fileID: 61000013251408942, guid: b41245a6a9450e043a8fde51757ba79c,
-        type: 2}
-      propertyPath: m_IsTrigger
+    - target: {fileID: 1000011211459788, guid: b41245a6a9450e043a8fde51757ba79c, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

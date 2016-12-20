@@ -9,7 +9,7 @@ public class OptionsController : MonoBehaviour
     private GameSettings gameSettings;
     private static bool gameDefaultSettings = true;
 	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
         gameSettings = GetComponent<GameSettings>();
         if (volumeSliderObject)

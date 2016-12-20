@@ -38,10 +38,13 @@ public class PedalController : MonoBehaviour
         if (Input.GetKey(upKey) && transform.position.y < topBounds)
         {
             transform.Translate(0f, speed*Time.deltaTime, 0);
+            Debug.Log("Gone to move player up");
         }
         else if (Input.GetKey(downKey) && transform.position.y > bottomBounds)
         {
             transform.Translate(0f, -speed*Time.deltaTime, 0);
+            Debug.Log("Gone to move player down");
+
         }
 
         if (GameSettings.colourModeEnabled)

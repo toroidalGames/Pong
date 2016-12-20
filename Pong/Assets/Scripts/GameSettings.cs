@@ -10,7 +10,7 @@ public class GameSettings : MonoBehaviour
     private static float gameSpeed;
     [SerializeField]private Text playerOneScoreText;
     [SerializeField] private Text playerTwoScoreText;
-    public static bool colourModeEnabled;
+    public static bool colourModeEnabled = true;
     private SceneLoader sceneLoader;
     // Use this for initialization
     void Start ()
