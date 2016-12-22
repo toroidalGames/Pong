@@ -4,7 +4,6 @@ using System.Collections;
 public class WallController : MonoBehaviour {
     private PongColour currentPongColour;
     private Renderer wallRenderer;
-    private bool colourMode = true;
     // Use this for initialization
     void Start ()
     {
@@ -22,7 +21,7 @@ public class WallController : MonoBehaviour {
     private IEnumerator ChangeWallColour()
     {
         int currentColourIndex = (int)currentPongColour;
-        while (colourMode)
+        while (GameSettings.colourModeEnabled)
         {
             currentPongColour = (PongColour)(currentColourIndex = Random.Range(0, 3));
             wallRenderer.material.color = Colour.ColourFromPongColour((currentPongColour));

@@ -12,6 +12,7 @@ public class BallController : MonoBehaviour
     int currentColourIndex;
     private Renderer ballRenderer;
 
+
     // Use this for initialization
     void Start()
     {
@@ -19,7 +20,12 @@ public class BallController : MonoBehaviour
         velocity = gameSettings.RetrieveGameSpeed();
         direction = new Vector3(1, 1, 0);
         currentColourIndex = (int) currentPongColour;
-        ballRenderer = GetComponent<Renderer>();
+        if (GameSettings.colourModeEnabled)
+        {
+            ballRenderer = GetComponent<Renderer>();
+            currentPongColour = (PongColour)(currentColourIndex = Random.Range(0, 3));
+            ballRenderer.material.color = Colour.ColourFromPongColour(currentPongColour);
+        }
     }
 
     // Update is called once per frame
@@ -37,7 +43,7 @@ public class BallController : MonoBehaviour
         if (pedal)
         {
             direction = new Vector3(-direction.x, direction.y, direction.z);
-            if (pedal.gameObject.GetComponent<Renderer>().material.color != ballRenderer.material.color)
+            if (pedal.gameObject.GetComponent<Renderer>().material.color != ballRenderer.material.color && GameSettings.colourModeEnabled)
             {
                 pedal.gameObject.SetActive(false);
                 Debug.Log("Collided with incorrect pedal colour");
@@ -48,7 +54,7 @@ public class BallController : MonoBehaviour
         else if (wall)
         {
             direction = new Vector3(direction.x, -direction.y, direction.z);
-            if (wall.gameObject.GetComponent<Renderer>().material.color != ballRenderer.material.color)
+            if (wall.gameObject.GetComponent<Renderer>().material.color != ballRenderer.material.color && GameSettings.colourModeEnabled)
             {
                 currentPongColour = (PongColour) (currentColourIndex = Random.Range(0, 3));
                 ballRenderer.material.color = Colour.ColourFromPongColour(currentPongColour);

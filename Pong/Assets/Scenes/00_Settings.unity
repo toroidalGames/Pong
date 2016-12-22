@@ -134,6 +134,11 @@ Prefab:
       propertyPath: volumeSliderObject
       value: 
       objectReference: {fileID: 222782130}
+    - target: {fileID: 114000011333105178, guid: 322849ef964969c4aa193f988670dd17,
+        type: 2}
+      propertyPath: toggle
+      value: 
+      objectReference: {fileID: 1464103763}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 322849ef964969c4aa193f988670dd17, type: 2}
   m_IsPrefabParent: 0
@@ -1600,7 +1605,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1959681333}
-  toggleTransition: 1
+  toggleTransition: 0
   graphic: {fileID: 1310210233}
   m_Group: {fileID: 0}
   onValueChanged:
